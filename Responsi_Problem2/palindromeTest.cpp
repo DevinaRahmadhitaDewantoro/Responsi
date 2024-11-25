@@ -1,26 +1,39 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-bool isPalindrome(int n){
-    int real = n;
-    int reverse = 0;
-    while(n > 0){
-        int digit = n % 10;
-        reverse = reverse * 10 + digit;
-        n/= 10;
-    }
-    return real == reverse;
-}
-
 int main(){
-    int n = 1221;
-    bool result = isPalindrome(n);
-    bool expected = true;
+    
+    string str1 = "kasurusak";
+    string str2 = "kakak";
+    string a1 = str1;
+    string a2 = str2;
 
-    if (result == expected){
+    int n1 = str1.length();
+
+    for(int i = 0; i < n1/2; i++){
+        char temp = str1[i];
+        str1[i] = str1[n1-i-1];
+        str1[n1-i-1] = temp;
+    }
+
+    int n2 = str2.length();
+
+    for(int i = 0; i < n2/2; i++){
+        char temp = str2[i];
+        str2[i] = str2[n2-i-1];
+        str2[n2-i-1] = temp;
+    }
+     
+    bool result = (str1 == a1 && str2 == a2);
+    bool expected = true;
+    
+    if(result == expected){
         cout << "Test passed" << endl;
-     } else {
+    } else {
         cout << "Test failed" << endl;
-     }
+    }
+
     return 0;
+
 }
